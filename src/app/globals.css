@@ -1,26 +1,51 @@
 @import "tailwindcss";
 
+/* 따뜻한 크림 → 살구 톤 */
 :root {
-  --background: #f4f4f5;
-  --foreground: #18181b;
+  --background: #fdf6ee;
+  --foreground: #3a2a21;
+  --muted: #7a5f4e;
+  --bg-gradient: linear-gradient(165deg, #fffaf3 0%, #fdf0e3 45%, #fbe2d0 100%);
+  /* 유리 카드 뒤로 은은하게 비치는 빛 번짐 */
+  --glow-a: rgba(255, 196, 160, 0.55);
+  --glow-b: rgba(255, 226, 190, 0.7);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-pretendard), -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Malgun Gothic", system-ui, sans-serif;
 }
 
+/* 다크 모드: 같은 따뜻한 톤을 어둡게 */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #09090b;
-    --foreground: #f4f4f5;
+    --background: #1c1512;
+    --foreground: #f6ebe2;
+    --muted: #bfa595;
+    --bg-gradient: linear-gradient(165deg, #1f1714 0%, #2a1d17 55%, #3a251b 100%);
+    --glow-a: rgba(214, 120, 70, 0.22);
+    --glow-b: rgba(240, 170, 110, 0.12);
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  /* 한글이 잘 보이는 시스템 글꼴 우선 */
-  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic",
-    "Noto Sans KR", system-ui, sans-serif;
+  font-family: var(--font-sans);
+  letter-spacing: -0.01em;
+}
+
+/* 화면에 고정된 배경 레이어 (스크롤해도 그라데이션이 끊기지 않음) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(38rem 26rem at 12% 8%, var(--glow-b), transparent 70%),
+    radial-gradient(32rem 30rem at 92% 78%, var(--glow-a), transparent 70%),
+    var(--bg-gradient);
 }
