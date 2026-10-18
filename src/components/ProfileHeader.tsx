@@ -10,6 +10,8 @@ export default function ProfileHeader({ profile }: { profile: Profile }) {
         width={176}
         height={176}
         priority
+        // 외부 이미지(placehold.co는 SVG)는 Next 이미지 최적화를 거치지 않고 그대로 표시
+        unoptimized={profile.image.startsWith("http")}
         className="h-44 w-44 rounded-full object-cover ring-4 ring-white shadow-md dark:ring-zinc-800"
       />
       <h1 className="mt-10 text-lg font-bold leading-tight">{profile.name}</h1>

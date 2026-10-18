@@ -14,9 +14,9 @@ export type Profile = {
 };
 
 export const profile: Profile = {
-  name: "김클로", // TODO: 실제 이름
-  bio: "세계 최강 바이브코더", // TODO: 실제 한 줄 소개
-  image: "/profile.svg", // TODO: 실제 사진을 public/ 에 넣고 경로 변경
+  name: "고덕동불개미",
+  bio: "경제적 자유를 누리고 싶은 개미입니다.",
+  image: "/profile.jpeg", // 다운로드 폴더의 불개미.jpeg를 public/ 에 복사
 };
 
 export const links: LinkItem[] = [
